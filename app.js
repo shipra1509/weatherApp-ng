@@ -44,6 +44,15 @@ weatherApp.controller('forecastController', ['$scope', '$resource', 'cityService
         callback: "JSON_CALLBACK"},{ get: { method: "JSONP" }});
     
  $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: 2, appid: 'e874f3c217b0b5b04010a43e8d1d93f6' });
+    
+    $scope.convertToFahrenheit = function(degK){
+        return   Math.round((1.8 * (degK - 273)) + 32);
+    };
+    
+    $scope.convertToDate = function(dt){
+        return new Date(dt*1000);
+    };
+
         
    console.log($scope.weatherResult);     
 }]);
